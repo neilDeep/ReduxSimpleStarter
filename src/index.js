@@ -1,15 +1,31 @@
+// Import React & ReactDOM //
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+// End Import React & ReactDOM //
 
-import App from './components/app';
-import reducers from './reducers';
+// Import Components //
+import SearchBar from './components/search_bar';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+// End Import Components //
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+
+// Save YouTube API_KEY & Import Module //
+const API_KEY = 'AIzaSyCeNq13ZJ4p0ImDlD9dyC74eqWdkvIOBgo';
+import YTSearch from 'youtube-api-search';
+// End YouTube API_KEY & Import Module //
+
+// YTSearch //
+YTSearch({key: API_KEY, term: 'young thug'}, function(data) {
+  console.log('YouTube Search Results: ',data);
+});
+// End YTSearch //
+
+const App = () => {
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.querySelector('.container'));

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const VideoListItem = ({video}) => {
+const VideoListItem = ({video, onVideoSelect}) => {
   // The ES6 Parameter Style is saying this: const video = props.video;
   const imageUrl = video.snippet.thumbnails.default.url;
 
